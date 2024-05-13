@@ -7,3 +7,6 @@ langchain-chroma
 tiktoken
 python-dotenv
 PyPDF2
+
+
+-e .
