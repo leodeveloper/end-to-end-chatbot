@@ -8,12 +8,12 @@ from dotenv import load_dotenv
 import streamlit as st
 from st_pages import Page, show_pages, add_page_title
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
-from langchain_community.chat_models import ChatOpenAI
+from langchain_community.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
-from htmlTemplates import css, bot_template, user_template
+from htmlTemplates import css, bot_template, user_template, footer
 
 def get_text_chunks(text):
     text_splitter = CharacterTextSplitter(
@@ -67,12 +67,14 @@ def main():
         st.session_state['chat_history'] = None
 
     st.set_page_config(
-        page_title="Chat with your SQL Server database",
-        page_icon="🧊"
+        page_title="Chat with your SQL Server database CSV files",
+        page_icon=":books:"
     )
 
     #creating a title for the app
     st.title("Chat Application with local Database using the generative ai")
+    #footer
+    st.markdown(footer,unsafe_allow_html=True)
 
     uploaded_files = st.file_uploader("Upload CSV", type="csv", accept_multiple_files=True)
     if uploaded_files:
@@ -90,50 +92,9 @@ def main():
         st.session_state.conversation = get_conversation_chain(vectorstore)
     
     user_question = st.text_input("Ask a question about your documents:")
-    if user_question:
-        handle_userinput(user_question)
+    with st.spinner("Processing"):
+        if user_question:
+            handle_userinput(user_question)
 
 if __name__ == '__main__':
     main()
-
-
-
-#pdf csv reader
-def read_file(file):
-    if file.name.endswith(".pdf"):
-        try:
-            pdf_reader=PyPDF2.PdfReader(file)
-            text=""
-            for page in pdf_reader.pages:
-                text+=page.extract_text()
-            return text
-        except Exception as e:
-            raise Exception("error reading the PDF file")
-        
-    elif file.name.endswith(".txt"):
-        return file.read().decode("utf-8")
-    
-    elif file.name.endswith(".csv"):
-        return file.read().decode("utf-8")
-    
-    elif file.name.endswith(".rtf"):
-        return file.read().decode("utf-8")
-    
-    elif file.name.endswith(".docx"):
-        return file.read()
-    
-    elif file.name.endswith(".doc"):
-        return file.read()
-    
-    #elif file.name.endswith(".jpeg"):
-        #return read_text_from_jpeg_image(file)
-    
-    #elif file.name.endswith(".png"):
-        #image = Image.open(file)  # Replace 'image.jpg' with the path to your image file
-        # Use pytesseract to do OCR on the image
-        #return pytesseract.image_to_string(image)
-         
-
-    
-    else:
-        raise Exception("unsopported file formate only pdf and text file supported")
