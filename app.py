@@ -90,13 +90,14 @@ def main():
 
         # create conversation chain
         st.session_state.conversation = get_conversation_chain(vectorstore)
+    else:
+        st.warning("Please upload a csv file!")
     
     user_question = st.text_input("Ask a question about your documents:")
     with st.spinner("Processing"):
         if user_question and uploaded_files:
             handle_userinput(user_question)
-        else:
-            st.warning("Please upload a csv file!")
+        
 
 if __name__ == '__main__':
     main()
