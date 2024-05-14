@@ -73,6 +73,7 @@ def main():
 
     #creating a title for the app
     st.title("Chat Application with local Database using the generative ai, using gpt-4-turbo model")
+    
     #footer
     st.markdown(footer,unsafe_allow_html=True)
 
