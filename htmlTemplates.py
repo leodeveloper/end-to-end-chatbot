@@ -62,6 +62,6 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://www.linkedin.com/in/sulemanmuhammad/" target="_blank">Muhammad Suleman</a></p>
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://www.linkedin.com/in/sulemanmuhammad/" target="_blank">Muhammad Suleman, for more info email at leodeveloper@gmail.com</a></p>
 </div>
 """
