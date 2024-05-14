@@ -68,7 +68,7 @@ def main():
 
     st.set_page_config(
         page_title="Chat with your SQL Server database CSV files",
-        page_icon=":books:"
+        page_icon=":Database:"
     )
 
     #creating a title for the app
