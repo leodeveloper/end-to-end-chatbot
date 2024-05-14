@@ -32,7 +32,7 @@ def get_vectorstore(text_chunks):
     return vectorstore
 
 def get_conversation_chain(vectorstore):
-    llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0.5)
+    llm = ChatOpenAI(model_name="gpt-4o")
     #llm = HuggingFaceHub(repo_id="google/flan-t5-xxl", model_kwargs={"temperature":0.5, "max_length":512})
 
     memory = ConversationBufferMemory(
@@ -72,7 +72,7 @@ def main():
     )
 
     #creating a title for the app
-    st.title("Chat Application with local Database using the generative ai, using gpt-4-turbo model")
+    st.title("Chat Application with local Database using the generative ai, using gpt-4o model")
     
     #footer
     st.markdown(footer,unsafe_allow_html=True)
