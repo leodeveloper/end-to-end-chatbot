@@ -1,4 +1,8 @@
+
+
 # End-to-End Chat Bot for Local SQL Database CSV
+
+![Chat Bot Image](https://github.com/leodeveloper/end-to-end-chatbot/blob/main/CSVChatGpt.png)
 
 This project aims to develop an end-to-end chat bot system that interacts with a local SQL database CSV file. The system utilizes Streamlit for creating interactive web applications, LangChain for natural language processing (NLP), and ChromeDB for managing the SQL database. The entire system is implemented in Python.
 
