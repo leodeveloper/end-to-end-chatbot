@@ -2,11 +2,14 @@ openai
 streamlit
 chromadb
 langchain
+langchain-community
 langchain-openai 
 langchain-chroma
 tiktoken
+st-pages
 python-dotenv
 PyPDF2
+faiss-cpu
 
 
 -e .
