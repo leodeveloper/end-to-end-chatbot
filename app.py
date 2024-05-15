@@ -81,7 +81,7 @@ def main():
     if uploaded_files:
         for file in uploaded_files:
             file.seek(0)
-        uploaded_data_read = [pd.read_csv(file, dtype=str) for file in uploaded_files]
+        uploaded_data_read = [pd.read_csv(file, dtype=str, encoding='utf-8') for file in uploaded_files]
         raw_data = pd.concat(uploaded_data_read)
         st.write(raw_data)
         # get the text chunks
